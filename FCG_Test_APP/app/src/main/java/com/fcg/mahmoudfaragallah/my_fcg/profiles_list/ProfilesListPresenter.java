@@ -2,7 +2,7 @@ package com.fcg.mahmoudfaragallah.my_fcg.profiles_list;
 
 import com.fcg.mahmoudfaragallah.my_fcg.backend.ProfilesService;
 import com.fcg.mahmoudfaragallah.my_fcg.model.data_model.ProfileObject;
-import com.fcg.mahmoudfaragallah.my_fcg.ui.ProfilesScreen;
+import com.fcg.mahmoudfaragallah.my_fcg.ui.ProfilesListScreen;
 import com.fcg.mahmoudfaragallah.my_fcg.util.LogUtil;
 
 
@@ -20,7 +20,7 @@ public class ProfilesListPresenter implements ProfilesListContract.Presenter {
 
 
     //region Constants
-    private static final String className = ProfilesScreen.class.getSimpleName();
+    private static final String className = ProfilesListScreen.class.getSimpleName();
     //endregion
 
 

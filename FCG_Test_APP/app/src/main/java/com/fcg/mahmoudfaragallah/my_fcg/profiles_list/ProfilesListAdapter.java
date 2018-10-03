@@ -64,7 +64,6 @@ public class ProfilesListAdapter extends RecyclerView.Adapter<ProfilesListAdapte
 //                .error(R.drawable.user_placeholder_error)
                 .into(viewHolder.profileImage);
 
-//        viewHolder.profileImage.setText(profile.getProfilePicture());
 
         viewHolder.itemView.setTag(profile.getId());
     }
@@ -75,7 +74,7 @@ public class ProfilesListAdapter extends RecyclerView.Adapter<ProfilesListAdapte
     @Override
     public void onClick(View view) {
 
-        String profileId = (String) view.getTag();
+        int profileId = (Integer) view.getTag();
         profilesListView.onProfileClick(profileId);
     }
 

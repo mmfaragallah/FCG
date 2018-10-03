@@ -3,7 +3,6 @@ package com.fcg.mahmoudfaragallah.my_fcg.ui;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.fcg.mahmoudfaragallah.my_fcg.R;
@@ -14,6 +13,7 @@ import com.fcg.mahmoudfaragallah.my_fcg.profiles_list.ProfilesListAdapter;
 import com.fcg.mahmoudfaragallah.my_fcg.profiles_list.ProfilesListContract;
 import com.fcg.mahmoudfaragallah.my_fcg.profiles_list.ProfilesListPresenter;
 
+import com.fcg.mahmoudfaragallah.my_fcg.profiles_list.ProfilesListRouter;
 import com.fcg.mahmoudfaragallah.my_fcg.util.ProgressDialogFragment;
 
 import java.util.List;
@@ -22,10 +22,10 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-public class ProfilesScreen extends AppCompatActivity implements ProfilesListContract.View {
+public class ProfilesListScreen extends AppCompatActivity implements ProfilesListContract.View {
 
     //region Constants
-    private static final String className = ProfilesScreen.class.getSimpleName();
+    private static final String className = ProfilesListScreen.class.getSimpleName();
     //endregion
 
 
@@ -34,6 +34,7 @@ public class ProfilesScreen extends AppCompatActivity implements ProfilesListCon
     private ProgressDialogFragment progressDialog;
     private ProfilesListAdapter listAdapter;
     private ProfilesListContract.Presenter presenter;
+    private ProfilesListContract.Router profilesListRouter;
     //endregion
 
 
@@ -46,7 +47,7 @@ public class ProfilesScreen extends AppCompatActivity implements ProfilesListCon
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profiles_screen);
+        setContentView(R.layout.activity_profiles_list_screen);
 
         ButterKnife.bind(this);
 
@@ -60,6 +61,7 @@ public class ProfilesScreen extends AppCompatActivity implements ProfilesListCon
         progressDialog = new ProgressDialogFragment();
         profilesService = RetrofitHandler.getInstance(this.getCacheDir()).createProfileService();
 
+        profilesListRouter = new ProfilesListRouter(this);
         listAdapter = new ProfilesListAdapter(this);
         presenter = new ProfilesListPresenter(this, profilesService);
     }
@@ -76,14 +78,13 @@ public class ProfilesScreen extends AppCompatActivity implements ProfilesListCon
     private void loadData() {
 
         presenter.getProfiles();
-        ;
-
     }
 
 
     @Override
-    public void onProfileClick(String profileId) {
+    public void onProfileClick(int profileId) {
 
+        profilesListRouter.goToProfileDetailsScreen(profileId);
     }
 
     @Override

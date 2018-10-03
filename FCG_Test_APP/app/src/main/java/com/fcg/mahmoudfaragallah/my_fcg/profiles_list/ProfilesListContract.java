@@ -16,7 +16,7 @@ public interface ProfilesListContract {
 
     interface View {
 
-        void onProfileClick(String profileId);
+        void onProfileClick(int profileId);
 
         void setProfilesList(List<ProfileObject> profiles);
 
@@ -26,6 +26,6 @@ public interface ProfilesListContract {
     }
 
     interface Router {
-        void goToProfileDetailsScreen(String profileId);
+        void goToProfileDetailsScreen(int profileId);
     }
 }
