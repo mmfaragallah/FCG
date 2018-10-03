@@ -14,6 +14,7 @@ import com.fcg.mahmoudfaragallah.my_fcg.profiles_list.ProfilesListContract;
 import com.fcg.mahmoudfaragallah.my_fcg.profiles_list.ProfilesListPresenter;
 
 import com.fcg.mahmoudfaragallah.my_fcg.profiles_list.ProfilesListRouter;
+import com.fcg.mahmoudfaragallah.my_fcg.util.LogUtil;
 import com.fcg.mahmoudfaragallah.my_fcg.util.ProgressDialogFragment;
 
 import java.util.List;
@@ -91,6 +92,11 @@ public class ProfilesListScreen extends AppCompatActivity implements ProfilesLis
     public void setProfilesList(List<ProfileObject> profiles) {
 
         listAdapter.updateProfilesList(profiles);
+    }
+
+    @Override
+    public void noDataLoaded() {
+        LogUtil.showToast(this, "There are no profiles loaded.");
     }
 
     @Override

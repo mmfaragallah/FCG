@@ -20,6 +20,8 @@ public interface ProfilesListContract {
 
         void setProfilesList(List<ProfileObject> profiles);
 
+        void noDataLoaded();
+
         void showProgressDialog();
 
         void dismissProgressDialog();

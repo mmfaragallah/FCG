@@ -53,6 +53,8 @@ public class ProfilesListPresenter implements ProfilesListContract.Presenter {
 
                 if (response.isSuccessful()) {
                     profilesListView.setProfilesList(response.body());
+                } else {
+                    profilesListView.noDataLoaded();
                 }
 
             }
@@ -63,6 +65,8 @@ public class ProfilesListPresenter implements ProfilesListContract.Presenter {
                 profilesListView.dismissProgressDialog();
 
                 LogUtil.error(className, t);
+
+                profilesListView.noDataLoaded();
             }
         });
     }
